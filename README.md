@@ -3,6 +3,8 @@
 
 ## Getting started
 
+`$ yarn add react-native-jivochat`
+                  or
 `$ npm install react-native-jivochat --save`
 
 ### Mostly automatic installation
@@ -34,6 +36,55 @@
       compile project(':react-native-jivochat')
   	```
 
+## SDK Configuration
+
+The widget_id and site_id can be found by going to the admin panel and then into the settings section of your Mobile app SDK. If you didn't create one yet, go "Add communication channels -> Mobile app SDK" and after asigning a new name, the widget_id and site_id will be displayed.
+
+The configuration settings for SDK can be located in the index.html file:
+
+### Android
+
+Loaction-> react-native-jivochat/android/src/main/assets/html/index_en.html
+
+  ```
+    jivo_config = {
+        //widget_id - REPLACE with YOUR own!
+        "widget_id": "xxxx",
+
+        //site_id - REPLACE with YOUR own!
+        "site_id": xxxxx,
+
+        //the color of the submit button
+        "plane_color":"red",
+
+        //color of agent messages
+        "agentMessage_bg_color":'green',
+
+        //text color of the message agent
+        "agentMessage_txt_color":'blue',
+
+        //color of the client message
+        "clientMessage_bg_color":'yellow',
+
+        //text color of the client message
+        "clientMessage_txt_color":'black',
+
+        //active the invitation, if not use, leave blank
+        "active_message": "Hello! Can I help you?",
+
+        //link that will glow in the operator program
+        "app_link":'Widget_Mobile',
+
+        //The text in the input field
+        "placeholder": "Enter message',
+
+        //use secure connection
+        "secure": true,
+
+        //use for replace onEvent function
+        //"event_func": function(event) {console.log(event)}
+    }
+    ```
 
 ## Usage
 ```javascript
@@ -42,4 +93,3 @@ import RNJivochat from 'react-native-jivochat';
 // TODO: What to do with the module?
 RNJivochat;
 ```
-  
