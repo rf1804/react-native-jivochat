@@ -48,7 +48,8 @@ The configuration settings for SDK can be located in the index.html file:
 
 Loaction-> react-native-jivochat/android/src/main/assets/html/index_en.html
 
-  ```jivo_config = {
+  ```
+  jivo_config = {
         //widget_id - REPLACE with YOUR own!
         "widget_id": "xxxx",
 
@@ -87,7 +88,8 @@ Loaction-> react-native-jivochat/android/src/main/assets/html/index_en.html
     }
     ```
 ## Usage
-```import RNJivochat from 'react-native-jivochat';
+```
+import RNJivochat from 'react-native-jivochat';
 
 Call this function:
   RNJivochat.openJivoChat()
