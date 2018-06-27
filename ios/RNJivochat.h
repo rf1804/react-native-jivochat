@@ -5,8 +5,6 @@
 #import "RCTBridgeModule.h"
 #endif
 
-#import "JivoSdk.h"
-
 @interface RNJivochat : NSObject <RCTBridgeModule>
 
 @end

@@ -42,6 +42,8 @@ The widget_id and site_id can be found by going to the admin panel and then into
 
 The configuration settings for SDK can be located in the index.html file:
 
+#For Smooth implementation kindly follow jivoChatExample folder
+
 ### Android
 
 Loaction-> react-native-jivochat/android/src/main/assets/html/index_en.html
@@ -87,9 +89,9 @@ Loaction-> react-native-jivochat/android/src/main/assets/html/index_en.html
     ```
 
 ## Usage
-```javascript
+```
 import RNJivochat from 'react-native-jivochat';
 
-// TODO: What to do with the module?
-RNJivochat;
+Call this function:
+  RNJivochat.openJivoChat()
 ```
