@@ -86,7 +86,7 @@ Loaction-> react-native-jivochat/android/src/main/assets/html/index_en.html
         //use for replace onEvent function
         //"event_func": function(event) {console.log(event)}
     }
-    ```
+  ```
 ## Usage
 ```
 import RNJivochat from 'react-native-jivochat';
