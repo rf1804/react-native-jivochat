@@ -36,20 +36,19 @@
       compile project(':react-native-jivochat')
   	```
 
+## For Smooth implementation kindly follow jivoChatExample folder
+
 ## SDK Configuration
 
 The widget_id and site_id can be found by going to the admin panel and then into the settings section of your Mobile app SDK. If you didn't create one yet, go "Add communication channels -> Mobile app SDK" and after asigning a new name, the widget_id and site_id will be displayed.
 
 The configuration settings for SDK can be located in the index.html file:
 
-#For Smooth implementation kindly follow jivoChatExample folder
-
 ### Android
 
 Loaction-> react-native-jivochat/android/src/main/assets/html/index_en.html
 
-  ```
-    jivo_config = {
+  ```jivo_config = {
         //widget_id - REPLACE with YOUR own!
         "widget_id": "xxxx",
 
@@ -87,10 +86,8 @@ Loaction-> react-native-jivochat/android/src/main/assets/html/index_en.html
         //"event_func": function(event) {console.log(event)}
     }
     ```
-
 ## Usage
-```
-import RNJivochat from 'react-native-jivochat';
+```import RNJivochat from 'react-native-jivochat';
 
 Call this function:
   RNJivochat.openJivoChat()
