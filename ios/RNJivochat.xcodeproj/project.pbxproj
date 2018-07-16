@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		104F3A5220E3B0F7006FEC84 /* JivoChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 104F3A4F20E3B0F7006FEC84 /* JivoChatVC.m */; };
+		104F3A4E20E3AFD9006FEC84 /* JivoChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 104F3A4C20E3AFD9006FEC84 /* JivoChatVC.m */; };
 		106EE5E120E2305B0007CD56 /* JivoSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = 106EE5E020E2305B0007CD56 /* JivoSdk.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNJivochat.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNJivochat.m */; };
 /* End PBXBuildFile section */
@@ -25,9 +25,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		104F3A4F20E3B0F7006FEC84 /* JivoChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JivoChatVC.m; sourceTree = "<group>"; };
-		104F3A5020E3B0F7006FEC84 /* JivoChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivoChatVC.h; sourceTree = "<group>"; };
-		104F3A5120E3B0F7006FEC84 /* JivoChatVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JivoChatVC.xib; sourceTree = "<group>"; };
+		104F3A4B20E3AFD9006FEC84 /* JivoChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivoChatVC.h; sourceTree = "<group>"; };
+		104F3A4C20E3AFD9006FEC84 /* JivoChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JivoChatVC.m; sourceTree = "<group>"; };
+		104F3A4D20E3AFD9006FEC84 /* JivoChatVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JivoChatVC.xib; sourceTree = "<group>"; };
 		106EE5DF20E2305B0007CD56 /* JivoSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JivoSdk.h; sourceTree = "<group>"; };
 		106EE5E020E2305B0007CD56 /* JivoSdk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JivoSdk.m; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libRNJivochat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNJivochat.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,9 +57,9 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				104F3A5020E3B0F7006FEC84 /* JivoChatVC.h */,
-				104F3A4F20E3B0F7006FEC84 /* JivoChatVC.m */,
-				104F3A5120E3B0F7006FEC84 /* JivoChatVC.xib */,
+				104F3A4B20E3AFD9006FEC84 /* JivoChatVC.h */,
+				104F3A4C20E3AFD9006FEC84 /* JivoChatVC.m */,
+				104F3A4D20E3AFD9006FEC84 /* JivoChatVC.xib */,
 				106EE5DF20E2305B0007CD56 /* JivoSdk.h */,
 				106EE5E020E2305B0007CD56 /* JivoSdk.m */,
 				B3E7B5881CC2AC0600A0062D /* RNJivochat.h */,
@@ -126,7 +126,7 @@
 			files = (
 				106EE5E120E2305B0007CD56 /* JivoSdk.m in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* RNJivochat.m in Sources */,
-				104F3A5220E3B0F7006FEC84 /* JivoChatVC.m in Sources */,
+				104F3A4E20E3AFD9006FEC84 /* JivoChatVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

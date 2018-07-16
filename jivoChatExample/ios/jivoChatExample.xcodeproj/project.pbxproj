@@ -12,6 +12,9 @@
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
+		1038A2EC20FCB0B9004B1213 /* ic_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1038A2C320FCB0B8004B1213 /* ic_back@3x.png */; };
+		1038A2ED20FCB0B9004B1213 /* ic_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1038A2EA20FCB0B8004B1213 /* ic_back@2x.png */; };
+		1038A2EE20FCB0B9004B1213 /* ic_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 1038A2EB20FCB0B8004B1213 /* ic_back.png */; };
 		10FB252820E3A67800DE830E /* JivoChatVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10FB252620E3A67700DE830E /* JivoChatVC.xib */; };
 		10FBD10E20E3AD2400BD7E9A /* html in Resources */ = {isa = PBXBuildFile; fileRef = 10FBD10D20E3AD2300BD7E9A /* html */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
@@ -307,6 +310,9 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* jivoChatExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jivoChatExampleTests.m; sourceTree = "<group>"; };
 		0BD7EAAE1753406384E6725D /* libRNJivochat.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNJivochat.a; sourceTree = "<group>"; };
+		1038A2C320FCB0B8004B1213 /* ic_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_back@3x.png"; sourceTree = "<group>"; };
+		1038A2EA20FCB0B8004B1213 /* ic_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_back@2x.png"; sourceTree = "<group>"; };
+		1038A2EB20FCB0B8004B1213 /* ic_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_back.png; sourceTree = "<group>"; };
 		10FB252620E3A67700DE830E /* JivoChatVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JivoChatVC.xib; sourceTree = "<group>"; };
 		10FBD10D20E3AD2300BD7E9A /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; name = html; path = "../node_modules/react-native-jivochat/android/src/main/assets/html"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
@@ -542,6 +548,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				1038A2EB20FCB0B8004B1213 /* ic_back.png */,
+				1038A2EA20FCB0B8004B1213 /* ic_back@2x.png */,
+				1038A2C320FCB0B8004B1213 /* ic_back@3x.png */,
 				10FBD10D20E3AD2300BD7E9A /* html */,
 				10FB252620E3A67700DE830E /* JivoChatVC.xib */,
 				13B07FAE1A68108700A75B9A /* jivoChatExample */,
@@ -949,9 +958,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1038A2EE20FCB0B9004B1213 /* ic_back.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				10FBD10E20E3AD2400BD7E9A /* html in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				1038A2ED20FCB0B9004B1213 /* ic_back@2x.png in Resources */,
+				1038A2EC20FCB0B9004B1213 /* ic_back@3x.png in Resources */,
 				10FB252820E3A67800DE830E /* JivoChatVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

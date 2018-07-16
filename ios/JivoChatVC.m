@@ -72,4 +72,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)actionBack:(id)sender {
+    
+//    [self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
+        
+    [self dismissViewControllerAnimated:TRUE completion:nil];
+}
+
 @end

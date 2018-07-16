@@ -56,6 +56,7 @@ static Class hackishFixClass = Nil;
 }
 
 - (BOOL) hackishlyHidesInputAccessoryView {
+    
     UIView *browserView = [self hackishlyFoundBrowserView];
     return [browserView class] == hackishFixClass;
 }
@@ -78,6 +79,7 @@ static Class hackishFixClass = Nil;
 }
 
 - (void)removeBar {
+    
     // убираем toolbar на клаве
     if (![self hackishlyHidesInputAccessoryView]){
         [self setHackishlyHidesInputAccessoryView: YES];
@@ -86,6 +88,7 @@ static Class hackishFixClass = Nil;
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
+    
     NSLog(@"keyboardWillShow");
     //перед показом клавиатуры делаем ее стандартной
     [self performSelector:@selector(removeBar) withObject:nil afterDelay:0];
@@ -112,6 +115,7 @@ static Class hackishFixClass = Nil;
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
+    
     NSLog(@"keyboardWillHide");
     
     // анимация для скрытия клавиатуры
@@ -132,6 +136,7 @@ static Class hackishFixClass = Nil;
 
 /* Создание спиннера пока загружается webview*/
 - (void)createLoader {
+    
     loadingView = [[UIView alloc]initWithFrame:CGRectMake(100, 400, 80, 80)];
     loadingView.backgroundColor = [UIColor colorWithWhite:0. alpha:0.6];
     loadingView.layer.cornerRadius = 5;
@@ -152,9 +157,7 @@ static Class hackishFixClass = Nil;
     
     
     [_webView addSubview:loadingView];
-    [loadingView setCenter : UIApplication.sharedApplication.keyWindow.center];
-    
-    
+    [loadingView setCenter : UIApplication.sharedApplication.keyWindow.center];    
     
 }
 

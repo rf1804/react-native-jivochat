@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">JivoSiteApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="begin_chat">Start chat</string>
+    <string name="chat_with">Chat with the Jivo support team</string>
+    <string name="made_with">This app was made</string>
+    <string name="sdk">with the JivoChat Mobile SDK</string>
+</resources>

@@ -17,9 +17,27 @@
     return dispatch_get_main_queue();
 }
 RCT_EXPORT_MODULE();
+
 RCT_EXPORT_METHOD(openJivoChat) {
+    
     JivoChatVC *chatVC = [[JivoChatVC alloc] initWithNibName:@"JivoChatVC" bundle:nil];
     UIViewController *root = [[[UIApplication sharedApplication] delegate] window].rootViewController;
+    
+//    UINavigationController * navg = [[UINavigationController alloc] initWithRootViewController:chatVC];
+//
+////    UIBarButtonItem *flipButton=  [[UIBarButtonItem alloc]
+////                                   initWithTitle:@"Back"
+////                                   style:UIBarButtonItemStyleBordered
+////                                   target:self
+////                                   action:@selector(flipView:)];
+//
+//
+//
+//    UIBarButtonItem * flipButton = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed:@"ic_back"] style:UIBarStyleDefault target:self action:nil];
+//
+//    navg.navigationItem.leftBarButtonItem = flipButton;
+//    root.navigationItem.leftBarButtonItem = flipButton;
+
     
     [root presentViewController:chatVC animated:true completion:nil];
 }
