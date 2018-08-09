@@ -92,5 +92,7 @@ Loaction-> react-native-jivochat/android/src/main/assets/html/index_en.html
 import RNJivochat from 'react-native-jivochat';
 
 Call this function:
-  RNJivochat.openJivoChat()
+let userName: 'Tester'
+let userEmail: 'test@gmail.com'
+  RNJivochat.openJivoChat(userName, userEmail)
 ```

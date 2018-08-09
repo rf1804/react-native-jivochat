@@ -29,9 +29,11 @@ class RNJivochatModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void openJivoChat() {
+  public void openJivoChat(String userName, String userEmail) {
     ReactApplicationContext context = getReactApplicationContext();
     Intent intent = new Intent(context, JivoActivity.class);
+    intent.putExtra("userName",userName);
+    intent.putExtra("userEmail",userEmail);
     context.startActivity(intent);
   }
 }

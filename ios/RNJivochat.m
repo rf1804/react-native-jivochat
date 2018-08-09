@@ -18,11 +18,13 @@
 }
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(openJivoChat) {
-    
+RCT_EXPORT_METHOD(openJivoChat:(NSString *)userName userEmail:(NSString *)userEmail) {
+
     JivoChatVC *chatVC = [[JivoChatVC alloc] initWithNibName:@"JivoChatVC" bundle:nil];
+    chatVC.UserName = userName;
+    chatVC.UserEmail = userEmail;
     UIViewController *root = [[[UIApplication sharedApplication] delegate] window].rootViewController;
-    
+
 //    UINavigationController * navg = [[UINavigationController alloc] initWithRootViewController:chatVC];
 //
 ////    UIBarButtonItem *flipButton=  [[UIBarButtonItem alloc]
@@ -38,11 +40,10 @@ RCT_EXPORT_METHOD(openJivoChat) {
 //    navg.navigationItem.leftBarButtonItem = flipButton;
 //    root.navigationItem.leftBarButtonItem = flipButton;
 
-    
+
     [root presentViewController:chatVC animated:true completion:nil];
 }
 
 
 
 @end
-  

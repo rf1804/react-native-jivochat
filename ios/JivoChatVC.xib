@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,15 +24,45 @@
                     <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </webView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0e-n1-Zlz">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BC-21-gcd">
+                            <rect key="frame" x="8" y="20" width="48" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="48" id="Sxd-5V-FkL"/>
+                                <constraint firstAttribute="height" constant="48" id="eJo-tD-kuA"/>
+                            </constraints>
+                            <state key="normal" image="ic_back.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="nVb-up-Htp"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="1BC-21-gcd" firstAttribute="leading" secondItem="C0e-n1-Zlz" secondAttribute="leading" constant="8" id="Gcb-Rn-FDv"/>
+                        <constraint firstAttribute="height" constant="64" id="NcW-Pf-vaZ"/>
+                        <constraint firstItem="1BC-21-gcd" firstAttribute="top" secondItem="C0e-n1-Zlz" secondAttribute="top" constant="20" id="k2o-Hv-nAg"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="oIW-Hg-GfP" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="JdN-mx-tdk"/>
+                <constraint firstAttribute="trailing" secondItem="C0e-n1-Zlz" secondAttribute="trailing" id="VbO-ga-AoW"/>
                 <constraint firstItem="oIW-Hg-GfP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="Weq-d9-NmE"/>
                 <constraint firstItem="oIW-Hg-GfP" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="nt4-aK-947"/>
+                <constraint firstItem="C0e-n1-Zlz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oHw-N9-dYZ"/>
                 <constraint firstItem="oIW-Hg-GfP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="t4l-UI-5CV"/>
+                <constraint firstItem="C0e-n1-Zlz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tgz-QS-o6d"/>
             </constraints>
             <point key="canvasLocation" x="-127.5" y="-100.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_back.png" width="24" height="24"/>
+    </resources>
 </document>

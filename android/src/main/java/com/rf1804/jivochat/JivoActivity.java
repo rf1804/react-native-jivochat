@@ -10,25 +10,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebView;
 
-
-
 public class JivoActivity extends AppCompatActivity implements JivoDelegate{
     private Toolbar toolbar;
+    private String userName;
+    private String userEmail;
+    private  String lang = "en";
+    private   JivoSdk jivoSdk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jivo);
         setToolbar();
+        getIntentData();
+        setJivoSDK();
 
-        String lang = "en";
-
-
-        JivoSdk jivoSdk = new JivoSdk((WebView) findViewById(R.id.webView), lang);
-        jivoSdk.delegate = this;
-        jivoSdk.prepare();
     }
-
     private void setToolbar() {
         toolbar= (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_back);
@@ -38,10 +35,16 @@ public class JivoActivity extends AppCompatActivity implements JivoDelegate{
                 finish();
             }
         });
-
     }
-
-
+    private void getIntentData(){
+      userName= getIntent().getStringExtra("userName");
+      userEmail= getIntent().getStringExtra("userEmail");
+    }
+    private void setJivoSDK(){
+     jivoSdk = new JivoSdk((WebView) findViewById(R.id.webView), lang);
+      jivoSdk.delegate = this;
+      jivoSdk.prepare();
+    }
     @Override
     public void onEvent(String name, String data) {
         if(name.equals("url.click")){
@@ -51,7 +54,8 @@ public class JivoActivity extends AppCompatActivity implements JivoDelegate{
                 startActivity(browserIntent);
             }
         }
+        else if (name.equals("chat.ready")) {
+            jivoSdk.callApiMethod("setContactInfo","{\"client_name\": \""+ userName+  "\", \"email\": \"" + userEmail +  "\"}");
+        }
     }
-
-
 }
