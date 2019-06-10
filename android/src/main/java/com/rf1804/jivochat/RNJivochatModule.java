@@ -34,6 +34,7 @@ class RNJivochatModule extends ReactContextBaseJavaModule {
     Intent intent = new Intent(context, JivoActivity.class);
     intent.putExtra("userName",userName);
     intent.putExtra("userEmail",userEmail);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     context.startActivity(intent);
   }
 }
