@@ -1,10 +1,11 @@
-
 #import "JivoChatVC.h"
 #import "JivoSdk.h"
 
+#import <WebKit/WebKit.h>
+
 @interface JivoChatVC () <JivoDelegate>
 
-@property (nonatomic, weak) IBOutlet UIWebView *webView;
+@property (nonatomic, weak) IBOutlet WKWebView *webView;
 @property (nonatomic, strong) JivoSdk* jivoSdk;
 @property (nonatomic, weak) NSString* lang;
 
@@ -28,7 +29,7 @@
     self.lang = [NSBundle.mainBundle localizedStringForKey:@"LangKey" value:@"" table:nil];
     self.jivoSdk = [[JivoSdk alloc] init];
     self.jivoSdk.language = @"en";
-
+    
     [self.jivoSdk setWebView:self.webView];
     [self.jivoSdk setDelegate:self];
     [self.jivoSdk prepare];
@@ -36,12 +37,10 @@
 //MARK:- onViewWillAppear
 - (void)onViewWillAppear {
     [self.jivoSdk start];
-
 }
 
 //MARK: ---- Delegate Methods
 - (void)onEvent:(NSString *)name :(NSString *)data {
-
     NSLog(@"event:%@, data: %@", name, data);
     if ([[name lowercaseString] isEqualToString:@"url.click"]) {
         if (data.length > 2) {
@@ -67,9 +66,9 @@
 
 
 - (IBAction)actionBack:(id)sender {
-
-//    [self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
-
+    
+    //    [self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
+    
     [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 

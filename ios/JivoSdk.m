@@ -12,6 +12,7 @@
 
 #import "JivoSdk.h"
 #import <Foundation/Foundation.h>
+#import <WebKit/WebKit.h>
 
 @interface JivoSdk ()
 {
@@ -56,7 +57,6 @@ static Class hackishFixClass = Nil;
 }
 
 - (BOOL) hackishlyHidesInputAccessoryView {
-    
     UIView *browserView = [self hackishlyFoundBrowserView];
     return [browserView class] == hackishFixClass;
 }
@@ -79,16 +79,13 @@ static Class hackishFixClass = Nil;
 }
 
 - (void)removeBar {
-    
     // убираем toolbar на клаве
     if (![self hackishlyHidesInputAccessoryView]){
         [self setHackishlyHidesInputAccessoryView: YES];
     }
-    
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
-    
     NSLog(@"keyboardWillShow");
     //перед показом клавиатуры делаем ее стандартной
     [self performSelector:@selector(removeBar) withObject:nil afterDelay:0];
@@ -98,8 +95,7 @@ static Class hackishFixClass = Nil;
     keyboardFrame = [_webView convertRect:keyboardFrame fromView:nil];
     
     NSString *script = [NSString stringWithFormat:@"window.onKeyBoard({visible:true, height:%@}); ", [@(keyboardFrame.size.height) stringValue]];
-    [_webView stringByEvaluatingJavaScriptFromString:script];
-    
+    [_webView evaluateJavaScript:script completionHandler:^(id result, NSError *error) {}];
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification {
@@ -110,12 +106,9 @@ static Class hackishFixClass = Nil;
     keyboardFrame = [_webView convertRect:keyboardFrame fromView:nil];
     
     [self execJs:[NSString stringWithFormat:@"window.scrollTo(0, %@);", [@(keyboardFrame.size.height) stringValue]]];
-
-
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
-    
     NSLog(@"keyboardWillHide");
     
     // анимация для скрытия клавиатуры
@@ -126,7 +119,7 @@ static Class hackishFixClass = Nil;
         _webView.frame = frame;
     }];
     
-    [_webView stringByEvaluatingJavaScriptFromString:@"window.onKeyBoard({visible:false, height:0});"];
+    [_webView evaluateJavaScript:@"window.onKeyBoard({visible:false, height:0});" completionHandler:^(id result, NSError *error) {}];
 }
 
 - (void)keyboardDidHide:(NSNotification *)notification {
@@ -136,7 +129,6 @@ static Class hackishFixClass = Nil;
 
 /* Создание спиннера пока загружается webview*/
 - (void)createLoader {
-    
     loadingView = [[UIView alloc]initWithFrame:CGRectMake(100, 400, 80, 80)];
     loadingView.backgroundColor = [UIColor colorWithWhite:0. alpha:0.6];
     loadingView.layer.cornerRadius = 5;
@@ -157,8 +149,7 @@ static Class hackishFixClass = Nil;
     
     
     [_webView addSubview:loadingView];
-    [loadingView setCenter : UIApplication.sharedApplication.keyWindow.center];    
-    
+    [loadingView setCenter : UIApplication.sharedApplication.keyWindow.center];
 }
 
 - (void)deregisterForKeyboardNotifications {
@@ -173,33 +164,18 @@ static Class hackishFixClass = Nil;
     [self deregisterForKeyboardNotifications];
 }
 
-
 - (NSString *)decodeString:(NSString *)encodedString {
     NSString *decodedString = [encodedString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
+    
     return decodedString;
 }
 
-#pragma mark - UIWebViewDelegate
+#pragma mark - WKNavigationDelegate
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    //onDidStartLoad
-    //спиннер видим
-    [loadingView setHidden:NO];
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    //спиннер не видим
-    [loadingView setHidden:YES];
-    //for ios 7.1
-    [self removeBar];
-}
-
--(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSURL *url = request.URL;
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    NSURL *url = navigationAction.request.URL;
     //если загрузка по протоколу jivoapi://, то начинаем обработку
     if ([[[url scheme] lowercaseString] isEqualToString:@"jivoapi"]) {
-        
         NSArray *components = [[[url absoluteString] stringByReplacingOccurrencesOfString:@"jivoapi://"
                                                                                withString:@""] componentsSeparatedByString:@"/"];
         NSString *apiKey = (NSString*)[components objectAtIndex:0];
@@ -210,73 +186,40 @@ static Class hackishFixClass = Nil;
         
         [delegate onEvent:apiKey :data];
         
-        return YES;
+        decisionHandler(WKNavigationActionPolicyAllow);
+        return;
     }
-    return YES;
+    
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 #pragma mark - JivoSdk
 
--(id) initWith:(UIWebView*)web;{
+-(id) initWith:(WKWebView*)web;{
     self = [super init];
     if(self) {
-        
         self.webView = web;
         self.language = @"";
-        
     }
     return self;
 }
 
-- (id) initWith:(UIWebView*)web :(NSString*) lang; {
-    
+- (id) initWith:(WKWebView*)web :(NSString*) lang; {
     self = [super init];
     if(self) {
-        
         self.webView = web;
         self.language = lang;
-        
     }
+    
     return self;
 }
 
-- (void) prepare; {
-    //подписываемся на уведомления клавиатуы
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidHide:)
-                                                 name:UIKeyboardDidHideNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidShow:)
-                                                 name:UIKeyboardDidShowNotification
-                                               object:nil];
-    
-    //назначенее делегата
-    _webView.delegate = self;
-}
+- (void) prepare; {}
 
--(void) start;{
-    
-    //спиннер
-    [self createLoader];
-    
+-(void) start; {
     //убираем нативный скролл
     _webView.scrollView.scrollEnabled = NO;
     _webView.scrollView.bounces = NO;
-    
-    //настройка скрытия клавиатуры
-    _webView.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     
     NSString *indexFile;
     
@@ -291,24 +234,40 @@ static Class hackishFixClass = Nil;
     NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     
     [_webView loadHTMLString:htmlString
-                      baseURL:[NSURL fileURLWithPath:
-                               [NSString stringWithFormat:@"%@/html/",
-                                [[NSBundle mainBundle] bundlePath]]]];
-
-    
+                     baseURL:[NSURL fileURLWithPath:
+                              [NSString stringWithFormat:@"%@/html/",
+                               [[NSBundle mainBundle] bundlePath]]]];
 }
 
 -(void) stop; {
-    
     [self deregisterForKeyboardNotifications];
 }
 
 -(NSString*) execJs : (NSString*) code;{
-        return [_webView stringByEvaluatingJavaScriptFromString:code];
+    __block NSString *resultString = nil;
+    __block BOOL finished = NO;
+    
+    [_webView evaluateJavaScript:code completionHandler:^(id result, NSError *error) {
+        if (error == nil) {
+            if (result != nil) {
+                resultString = [NSString stringWithFormat:@"%@", result];
+            }
+        } else {
+            NSLog(@"evaluateJavaScript error : %@", error.localizedDescription);
+        }
+        finished = YES;
+    }];
+    
+    while (!finished)
+    {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+    }
+    
+    return resultString;
 }
 
 -(void) callApiMethod: (NSString*) methodName : (NSString*)data;{
-    [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"window.jivo_api.%@(%@);",methodName,data]];
+    [_webView evaluateJavaScript:[NSString stringWithFormat:@"window.jivo_api.%@(%@);",methodName,data] completionHandler:^(id result, NSError *error) {}];
 }
 
 @end
