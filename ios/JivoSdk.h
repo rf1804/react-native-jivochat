@@ -6,6 +6,7 @@
 //  Copyright © 2016 JivoSite. All rights reserved.
 //
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 #ifndef JivoSdk_h
 #define JivoSdk_h
@@ -17,14 +18,14 @@
 
 @end
 
-@interface JivoSdk : NSObject<UIWebViewDelegate>
+@interface JivoSdk : NSObject<WKNavigationDelegate>
 
 @property (nonatomic, assign) id delegate;
-@property (strong, nonatomic) UIWebView* webView;
+@property (strong, nonatomic) WKWebView* webView;
 @property (strong, nonatomic) NSString* language;
 
--(id) initWith:(UIWebView*)web :(NSString*) lang;
--(id) initWith:(UIWebView*)web;
+-(id) initWith:(WKWebView*)web :(NSString*) lang;
+-(id) initWith:(WKWebView*)web;
 -(void) prepare;
 -(void) start;
 -(void) stop;
